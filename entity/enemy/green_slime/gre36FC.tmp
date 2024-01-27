@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqsii4g1k2qnt"]
+
+[ext_resource type="Script" path="res://entity/enemy/green_slime/green_slime.gd" id="1_pnpdg"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://entity/enemy/slime/slime.tscn" id="1_toxhj"]
+[ext_resource type="PackedScene" uid="uid://brnberjt86uqj" path="res://components/AttackComponent/attack_component.tscn" id="2_kdoax"]
+[ext_resource type="PackedScene" uid="uid://hgfqh02r5fhl" path="res://components/HealthComponent/health_component.tscn" id="3_rra1b"]
+[ext_resource type="PackedScene" uid="uid://dlmk68e60qa2l" path="res://components/HurtboxComponent/hurtbox_component.tscn" id="4_q8bj8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swpns"]
+radius = 51.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vdi4"]
+radius = 51.0
+
+[node name="GreenSlime" type="CharacterBody2D"]
+script = ExtResource("1_pnpdg")
+
+[node name="Slime" parent="." instance=ExtResource("1_toxhj")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_kdoax")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_rra1b")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_q8bj8")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -27)
+shape = SubResource("CircleShape2D_swpns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("CircleShape2D_2vdi4")

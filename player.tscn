@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://rqfsekogog60"]
+[gd_scene load_steps=12 format=3 uid="uid://rqfsekogog60"]
 
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_bgaqv"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://entity/player/happy_boo/happy_boo.tscn" id="1_bgaqv"]
 [ext_resource type="Script" path="res://player.gd" id="1_vghtx"]
 [ext_resource type="PackedScene" uid="uid://d3k0i2ul3rqgq" path="res://gun.tscn" id="3_66ex8"]
 [ext_resource type="Script" path="res://ExperienceBar.gd" id="4_4b7kw"]
+[ext_resource type="Script" path="res://components/HealthComponent/HealthComponent.gd" id="5_buoj8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_46p14"]
 radius = 40.0125
@@ -88,3 +89,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_fpv2k")
 theme_override_styles/fill = SubResource("StyleBoxFlat_q1cfn")
 value = 100.0
 show_percentage = false
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("5_buoj8")
+MAX_HEALTH = null

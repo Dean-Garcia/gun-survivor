@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brr38jpuut0gm"]
+[gd_scene load_steps=6 format=3 uid="uid://brr38jpuut0gm"]
 
 [ext_resource type="PackedScene" uid="uid://rqfsekogog60" path="res://player.tscn" id="1_d33ov"]
 [ext_resource type="Script" path="res://survivors_game.gd" id="1_itkr2"]
 [ext_resource type="PackedScene" uid="uid://be5sbx3f280xj" path="res://tree.tscn" id="2_b4ay2"]
+[ext_resource type="PackedScene" uid="uid://cn6hfbecp0wht" path="res://mob.tscn" id="3_iwnk3"]
 
 [sub_resource type="Curve2D" id="Curve2D_gsbwx"]
 _data = {
@@ -72,6 +73,9 @@ position = Vector2(1770, 169)
 
 [node name="Tree12" parent="." instance=ExtResource("2_b4ay2")]
 position = Vector2(1723, 487)
+
+[node name="Mob" parent="." instance=ExtResource("3_iwnk3")]
+position = Vector2(812, 885)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
