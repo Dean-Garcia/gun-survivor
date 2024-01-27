@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://rqfsekogog60"]
+
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_bgaqv"]
+[ext_resource type="Script" path="res://player.gd" id="1_vghtx"]
+[ext_resource type="PackedScene" uid="uid://d3k0i2ul3rqgq" path="res://gun.tscn" id="3_66ex8"]
+[ext_resource type="Script" path="res://ExperienceBar.gd" id="4_4b7kw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46p14"]
+radius = 40.0125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48jb0"]
+radius = 47.0956
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xygna"]
+bg_color = Color(0, 0.215686, 0.243137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll6yv"]
+bg_color = Color(0.313726, 0.917647, 0.964706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpv2k"]
+bg_color = Color(0.278431, 0.278431, 0.278431, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1cfn"]
+bg_color = Color(0.32549, 0.996078, 0.388235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(1, -2)
+platform_floor_layers = 4278190080
+script = ExtResource("1_vghtx")
+
+[node name="HappyBoo" parent="." instance=ExtResource("1_bgaqv")]
+unique_name_in_owner = true
+position = Vector2(1, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 14)
+shape = SubResource("CircleShape2D_46p14")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 2)
+
+[node name="Gun" parent="." instance=ExtResource("3_66ex8")]
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 23)
+shape = SubResource("CircleShape2D_48jb0")
+debug_color = Color(0.968627, 0.388235, 0.603922, 0.419608)
+
+[node name="ExperienceBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+offset_left = -961.0
+offset_top = 512.0
+offset_right = 959.0
+offset_bottom = 545.0
+theme_override_constants/outline_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_xygna")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ll6yv")
+step = 1.0
+value = 50.0
+show_percentage = false
+script = ExtResource("4_4b7kw")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -85.0
+offset_right = 63.0
+offset_bottom = -67.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fpv2k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q1cfn")
+value = 100.0
+show_percentage = false
