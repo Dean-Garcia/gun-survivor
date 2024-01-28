@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 signal health_depleted;
-
-var health = 100.0;
+@export var stats: PlayerStats
+@onready var health = stats.get_health();
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down");

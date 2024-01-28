@@ -12,6 +12,7 @@ func take_damage(attack):
 	
 	if health <=0:
 		get_parent().queue_free();
+		GameState.increaseExperience(get_parent().experienceValue)
 		const SMOKE_SCENE = preload("res://entity/effects/smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate();
 		get_parent().get_parent().add_child(smoke);
